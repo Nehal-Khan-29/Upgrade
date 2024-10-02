@@ -6,4 +6,4 @@ The critical challenge is to identify the effective methods to enhance student l
 ![Screenshot 2024-10-02 112743](https://github.com/user-attachments/assets/d4faa51b-24e2-49ad-a502-9a1a20a48e31)
 
 Check out the .ipynb file to learn how the project works.
-![Justification Code](https://nbviewer.org/github/Nehal-Khan-29/Upgrade/blob/main/Justification%20Code%20New.ipynb)
+Justification Code(https://nbviewer.org/github/Nehal-Khan-29/Upgrade/blob/main/Justification%20Code%20New.ipynb)
