@@ -239,6 +239,12 @@ def class_recommendation(l):
     stu_marks_avg = []
     
     if cls_id in list(df_students_check):
+        Converted_Assessments_name = []
+    
+        for i,j in enumerate(Assessments):
+            converted_column_name = j + ' Converted'
+            Converted_Assessments_name.append(converted_column_name)
+        
         for assessment in Converted_Assessments_name:
             average = df_students[assessment].mean() 
             stu_marks_avg.append(average)
@@ -263,6 +269,35 @@ def class_recommendation(l):
                 recommendation += "No Recommendations; "
                 
         formatted_marks = "\n".join([f"{assessment}: {f'{float(mark[0]):.2f}'}" for assessment, mark in test_data.items()])
-        messagebox.showinfo("Recommendation", f"Class: {cls_id}\nCourseID: {course_id}\n{formatted_marks}\nRecommendation: {recommendation}")
+        messagebox.showinfo("Recommendation", f"Class: {cls_id}\nCourseID: {course_id}\n\n{formatted_marks}\n\nRecommendation: {recommendation}")
     else:
         messagebox.showerror("No class", f"Class: {cls_id} is not available")
+    
+    
+#========================================================================================================================== 
+#Find students
+
+def findthem(student_id,class_id,course_id):
+    
+    df = pd.read_excel('Students.xlsx', sheet_name=course_id)
+    df_courses = pd.read_excel('Courses.xlsx',sheet_name=course_id)
+    
+    result = df[(df['Class'] == class_id) & (df['Student Id'] == int(student_id))]
+    Assessments = list(df_courses['Assessments'])
+    
+    Converted_Assessments_name = []
+
+    for i,j in enumerate(Assessments):
+        converted_column_name = j + ' Converted'
+        Converted_Assessments_name.append(converted_column_name)
+
+    stu_marks = []
+    for assessment in Converted_Assessments_name:
+        stu_marks.append(result[assessment].values[0])
+        
+    test_data = {assessment: [f"{mark}"] for assessment, mark in zip(Assessments, stu_marks)}
+    
+    recommendation = result['Recommendation'].values[0]
+    formatted_marks = "\n".join([f"{assessment}: {mark[0]}" for assessment, mark in test_data.items()])
+    messagebox.showinfo("Recommendation", f"Student ID: {student_id}\nClass: {class_id}\nCourseID: {course_id}\n\n{formatted_marks}\nTotal: {result['Total'].values[0]}\n\nRecommendation: {recommendation}")
+    
