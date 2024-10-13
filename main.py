@@ -92,10 +92,10 @@ def findstudent():
                 if pd.isna(recommendation) or recommendation.strip() == "":
                     messagebox.showinfo("No Recommendation", "No recommendation yet.")
                 else:
-                    messagebox.showinfo("Recommendation", f"Student ID: {student_id}\nClass: {class_id}\nCourseID: {course_id}\nRecommendation: {recommendation}")
-        
+                    mlcode.findthem(student_id,class_id,course_id)
+ 
         except FileNotFoundError:
-            messagebox.showerror("File Error", "The file 's.xlsx' was not found.")
+            messagebox.showerror("File Error", "The file 'Students.xlsx' was not found.")
         except ValueError:
             messagebox.showerror("Sheet Error", f"No sheet named '{course_id}' in the file.")
         except Exception as e:
