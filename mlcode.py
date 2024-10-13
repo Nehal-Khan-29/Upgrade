@@ -269,7 +269,7 @@ def class_recommendation(l):
                 recommendation += "No Recommendations; "
                 
         formatted_marks = "\n".join([f"{assessment}: {f'{float(mark[0]):.2f}'}" for assessment, mark in test_data.items()])
-        messagebox.showinfo("Recommendation", f"Class: {cls_id}\nCourseID: {course_id}\n\n{formatted_marks}\n\nRecommendation: {recommendation}")
+        messagebox.showinfo("Class Recommendation", f"Class: {cls_id}\nCourseID: {course_id}\n\n{formatted_marks}\n\nRecommendation: {recommendation}")
     else:
         messagebox.showerror("No class", f"Class: {cls_id} is not available")
     
@@ -299,5 +299,5 @@ def findthem(student_id,class_id,course_id):
     
     recommendation = result['Recommendation'].values[0]
     formatted_marks = "\n".join([f"{assessment}: {mark[0]}" for assessment, mark in test_data.items()])
-    messagebox.showinfo("Recommendation", f"Student ID: {student_id}\nClass: {class_id}\nCourseID: {course_id}\n\n{formatted_marks}\nTotal: {result['Total'].values[0]}\n\nRecommendation: {recommendation}")
+    messagebox.showinfo("Student Recommendation", f"Student ID: {student_id}\nClass: {class_id}\nCourseID: {course_id}\n\n{formatted_marks}\nTotal: {result['Total'].values[0]}\n\nRecommendation: {recommendation}")
     
